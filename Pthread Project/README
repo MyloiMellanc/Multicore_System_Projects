@@ -1,0 +1,13 @@
+Multicore System Assignment 2 - Pthread Project
+
+2010314487 JongUk Kim
+
+A. Data Structure
+For less time consumption of Live & Dead Stage, I set 27 Circular queue for checking and modulating number of statement of adjust cell. after that, cell which has 1 or more z value check only 9 adjust cells instead of all 27 cells.
+
+
+B,C. Algorithm and How reduce the time
+After checking activation of function, I found 90 percents of time are consumed in Live & Dead, and Plague stage. in addition, devil and angel stage is not well affected by adding pthreads. so, I spend all Pthread to live & dead stage for reducing time of checking adjust cells.
+So, Divide x range value of cube for looping of each threads, and let they loop  with their own x value range. no mutex value are used because every thread modulate value in each of own range.
+
+

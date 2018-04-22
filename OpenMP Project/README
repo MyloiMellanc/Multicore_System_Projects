@@ -1,0 +1,24 @@
+Multicore System Assignment 4 - OpenMP Project
+
+2010314487 JongUk Kim
+
+
+In first, I reused main source code of that of Pthread project for this project assignment.
+And it's main stage is compressed and restructed.
+
+
+A. Data Structure
+Same with Pthread.
+For less time consumption of Live & Dead Stage, I set 27 Circular queue for checking and modulating number of statement of adjust cell. after that, cell which has 1 or more z value check only 9 adjust cells instead of all 27 cells.
+
+
+B,C. Algorithm and How reduce the time
+Same Algorithm with Pthread, but there are more compression of stage.
+After checking activation of function, I found 90 percents of time are consumed in Live & Dead, and Plague stage. in addition, devil and angel stage is not well affected by adding pthreads. so, I spend all Pthread to live & dead stage for reducing time of checking adjust cells.
+So, Divide x range value of cube for looping of each threads, and let they loop  with their own x value range. no mutex value are used because every thread modulate value in each of own range.
+
+
+Additional Algorithm
+I checked that the number of thread which copy devil in last action of devil stage is only one. so, I let one thread has a mission of copying all devil instead of doing other sequence. In loop, one thread does only checking devil and copying, and other core_num - 1 threads do other sequence(devil, livedead, plague).
+
+

@@ -1,0 +1,62 @@
+
+
+2010314487 JongUk Kim
+
+a. Data Structure
+-Map, Cell
+ In this source code, map is consisted of cell struct.
+ Cell struct has these variable
+{
+	--short state
+	 it contain current state of cell - LIVE, DEAD, PLAGUE.
+	 if it needs to change the state of itself, 
+	 it set it's next state to next_prev_state,
+	 and wait for next change loop code.
+
+	--short next_prev_state
+	 This variable has 2 objective - next , previous.
+	 1) next - it contains next state of cell for change loop code.
+	 2) previous - 
+		if it change to PLAGUE state, it must save its previous state.
+		so when it is in PLAGUEd, this variable save its previous state,
+		and never be changed its state until PLAGUE state is over.
+
+	--short on_devil
+	 It refers how many devil are in this cell.
+	 The number of devil is checked by value of this variable because devil
+	 can be in same cell at a time, in devil stage.
+
+	--bool next_devil
+	 Because its code divide that of setting devil's next position and 
+	 that of update on_devil value, it save tha value that existing of
+	 next_devil for update loop code.
+}
+
+
+-Devil
+ Information of devil is all on that Cell Structure, for not making devil struct.
+
+-Angel
+ Angel Struct has only 3 variables, its position.
+{
+	int x
+	int y
+	int z
+}
+
+Because its move value and scope are changed every loop, i didn't make those value to variable in angel struct.
+
+
+
+b, c. Algorithm
+-Searching and Observing
+I focused this assignment for not comprehensive way. So i use linear search for almost every loop for observing map.
+for same reason, i put devil object in cell structure for its similar loop code.
+
+For Angel stage, for setting priority of moving direction, i set these directions in one array sorted by priority, get max value first, and search direction that contain max value for the first time.
+
+
+d. mail : kju2540@naver.com
+   phone : 010-9132-5319
+
+
